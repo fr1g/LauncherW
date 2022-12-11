@@ -1,0 +1,156 @@
+*{
+    user-select: none !important;
+}
+/* body{
+    
+} */
+
+.forceWindow{
+    width: 855px;
+    height: 475px;
+}
+
+:root{
+    --agc: rgb(255, 218, 55);
+    --bgc: rgba(255, 244, 194, 0.965);
+}
+
+#mWindow{
+    background-color: var(--bgc) !important;
+    border-color: var(--agc) !important;
+    width: 100%;
+    min-width: 98.5%;
+    height: auto;
+
+}
+ .adw{
+    width: 100%;
+    min-width: 98.5%;
+    height: 443px;
+}
+
+.hin{
+    height: 425px;
+    max-height: 425px;
+}
+
+.winher{
+    width: inherit;
+    min-width: inherit;
+    max-width: inherit;
+}
+
+.bgc{
+    background-color: var(--bgc) !important;
+
+}
+
+.ud{
+    -webkit-app-region: no-drag !important;
+}
+
+.d{
+    -webkit-app-region: drag !important;
+} 
+
+.elop{
+    animation: owr 12s linear infinite;
+}
+@keyframes owr {
+    0%{transform: translateX(0%);}
+    30%{transform: translateX(0%);}
+    /* 50%{transform: translateX(-60%);} */
+    /* 70%{ transform: translateX(-120%);} */
+    100%{ transform: translateX(-120%);}
+}
+
+#logs>p{
+    opacity: 65%;
+    
+}
+#logs>p::before{
+    content: "- ";
+}
+
+.mainShowIn{
+    animation: sinn .199s linear;
+}
+
+@keyframes sinn {
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+    
+}
+.inheritw{
+    width: inherit;
+    min-width: inherit;
+}
+
+.w1034{
+    width: 855px;
+    min-width: 855px;
+    max-width: 855px;
+}
+
+/* up show-off down show-out*/
+
+.mainShowOut{
+    animation: sout .199s linear;
+}
+
+@keyframes sout {
+
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+
+}
+
+.cageText{
+    
+}
+
+.subShowOut{ /*show*/
+    animation: sso .199s linear !important;
+}
+
+@keyframes sso{
+    0%{
+        transform: translateY(-100) !important;
+    }
+    100%{
+        transform: translateY(0) !important;
+    }
+
+}
+
+
+
+.bgass{
+    background-color: rgba(233, 240, 240, 0.829);
+}
+
+.subShowIn{ /*hide*/
+    animation: ssi .199s linear !important;
+}
+
+@keyframes ssi{
+    0%{
+        opacity: 90% !important;
+    }
+    100%{
+        opacity: 0% !important;
+    }
+
+}
+
+.w-up{
+    width: 36.5rem;
+}

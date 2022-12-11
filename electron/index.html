@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/><meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/> -->
+    <link rel="stylesheet" href="output.css">
+    <title>LauncherW</title>
+    <link rel="stylesheet" href="./ico.css">
+    <link rel="stylesheet" href="pagres.css">
+
+</head>
+<body id="abody" class="mainShowOut bg-transparent d pr-3 pb-3 m-0 overflow-hidden forceWindow transition-all " >
+    <!-- style="height: 500px !important; width: 830px !important;" -->
+
+            <div class="border-2 absolute rounded-lg container shadow-md " id="mWindow">
+                <div class="topBar d grid grid-cols-12 gap-0  w-full" id="top">
+
+                    <div class="col-span-9 w-full d py-1.5" id="titl"><span class="m-5 font-semibold pt-3">LauncherWebUI</span> </div>
+
+                    <div id="re" class="controlButton col-span-1 py-1.5 rounded bg-transparent hover:bg-zinc-200 bg-opacity-50 hover:bg-opacity-50 active:bg-zinc-500 active:bg-opacity-30 transition-all ud text-center">
+                        <span class=" text-center m-3.5">&ac;</span>
+                    </div>
+                    <div id="min" class="controlButton col-span-1 py-1.5 rounded bg-transparent hover:bg-zinc-200 bg-opacity-50 hover:bg-opacity-50 active:bg-zinc-500 active:bg-opacity-30 transition-all ud text-center">
+                        <span class="icon-minus font-thin text-xs text-center m-5"></span>
+                    </div>
+                    <div id="close" class="controlButton col-span-1 py-1.5 ud transition-all text-center rounded 
+                    bg-rose-300 dark:bg-rose:200 hover:bg-red-400 dark:hover:bg-rose-700
+                    active:bg-red-800 rounded-tr-lg">
+                        <span class="icon-cross font-thin text-xs text-center m-5"></span>
+                    </div>
+                </div>
+                <div class="mainWindowActs ud grid grid-cols-12 gap-1" >
+                    <div class="col-span-full  p-0.5 font-sans m-3 mt-1 mb-5">
+
+                        <div class="runningLogs px-3.5 h-64 text-opacity-70" id="logs">
+                        <!-- this is the log area -->
+                        </div>
+                        <div class="h-64 hidden" id="phold"></div>
+                        <!-- for Running Logs, it shall check Child and minus every first child while list full which can be done by using events. -->
+                        <h1 class="text-black dark:text-zinc-50 text-5xl font-semibold select-none bottom-4 m-5 mb-0.5 ml-3.5 pl-0.5 overflow-hidden pb-1.5">Version Query From Bobcat</h1>
+                    </div>
+                </div>
+                <div class="grid ud grid-cols-6 gap-1.5 pt-1.5 bottom-0" id="buttonList">
+                    <div class="titleButton text-center py-1.5">LauncherW</div>
+                    
+                    <div id="gamelistBut" class="listButton text-center py-1.5 transition-all 
+                    bg-opacity-0 bg-yellow-100 hover:bg-opacity-50 active:bg-opacity-70
+                    ">游戏列表</div> <!-- onclick refresh -->
+
+                    <div class="settingsButton text-center py-1.5 transition-all 
+                     bg-opacity-0 bg-yellow-100 hover:bg-opacity-50 active:bg-opacity-70
+                    " id="aju">设置</div>
+
+                    <div class=""></div>
+                    <div class="accountButton overflow-x-hidden text-center p-1 mr-1 transition-all 
+                    bg-opacity-0 bg-yellow-100 hover:bg-opacity-50 active:bg-opacity-70 px-0.5 
+                    " title="none" id="usrBut">
+                        <span class="elop loop o inline-block filter mx-0.5 drop-shadow">AccountSelectionClickPopOut</span>
+                    </div>
+                    <div id="launch" class="transition-all z-30 overflow-x-hidden launch text-center py-1.5 
+                    bg-emerald-400 bg-opacity-80 hover:bg-emerald-300 rounded rounded-br-lg active:bg-green-400 dark:active:bg-green-500 dark:bg-emerald-600 dark:hover:bg-emerald-500 ">
+                        <span class="launButt align-bottom text-gray-700 dark:text-gray-300 select-none ">
+                            启动!
+                        </span>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+    
+            <!-- the configurations pages -->
+            <div class="hidden transition-all toggle off mr-1.5 p-1 px-1.5 bg-emerald-300 hover:bg-emerald-500 active:bg-emerald-700 border border-blue-100 rounded shadow-sm ml-0.5 mt-0.5 text-center">
+                tailwind placeholder
+            </div>
+
+            <div class="hidden   transition-all forceWindow adw h-max subShowOut fixed z-50 container p-2 rounded-lg border bgass" id="cout">
+
+                    <!-- here's two need to unhidden!!! -->
+
+                    <div class="hidden   grid-cols-5 gap-0.5 bg-slate-50 transition-all border-white border rounded shadow bg-opacity-90 p-3 hin" id="settings">
+                        <div class="col-span-full clear-both winher fixed bg-gray-200 px-2.5 right-8 rounded-lg p-1.5 shadow-md ">
+                            <span class="float-left text-lg mr-3">设置</span>
+                            <span class="transition-all float-right text-lg font-semibold bg-rose-300 dark:bg-rose:200 hover:bg-red-400 dark:hover:bg-rose-700
+                            active:bg-red-800 px-3 border rounded aju-shut" id="">&times;</span>
+                        </div>
+                        <div class="col-span-full h-12 mb-1 "></div> <!--to made blanc-->
+                        <div class="e col-span-full overflow-y-scroll px-4 overflow-x-clip grid grid-cols-5 gap-0.5 bg-transparent">
+                            <!-- per single item --><div class="col-span-full h-3"></div>
+                            <div class="col-span-3 mb-3.5">
+                                <h1>显示日志到主界面</h1>
+                            </div>
+                            <div class="spanner"></div>
+                            <div class="">
+                                <span id="swtto" class="transition-all toggle on mr-1.5 p-1 px-1.5 bg-rose-200 hover:bg-rose-300 active:bg-rose-400 border border-rose-100 rounded shadow-sm ml-0.5 text-center mt-0.5">点击关闭
+                                </span>
+                            </div>
+    
+                            <div class="col-span-3 mb-3.5">
+                                <h1>启动用Java版本：</h1>
+                            </div>
+                            <div class="spanner col-span-2 text-right">
+                                <select name="java" id="java" class="w-36">
+                                    <option value="选择Java版本" selected disabled>选择Java</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-span-3 mb-3.5">
+                                <h1>游戏窗口大小</h1>
+                            </div>
+                            <div class="x ">
+                                宽：<input type="text" name="" class="w-28 pr-0.5 border-r rounded-sm shadow-sm" id="">
+                            </div>
+                            <div class="y">
+                                高：<input type="text" name="" class="w-28 pr-0.5 border-r rounded-sm shadow-sm" id="">
+                            </div>
+    
+                            <div class="col-span-3 mt-3.5 mb-1.5">
+                                <h1>执行命令</h1>
+                            </div>
+                            <div class="col-span-full">
+                                <form id="icmd">
+                                    <input type="text" class="w-up" name="icmd" id="innercmd" placeholder=" 在这里运行内部命令，每个命令节点之间使用#分隔。执行clear清空控制台窗口。">
+                                    <span class=" p-1 px-1.5 bg-sky-300 hover:bg-sky-500 active:bg-sky-700 border border-blue-100 rounded shadow-sm ml-0.5">
+                                        <input type="submit" class="bg-transparent" value="执行 [Enter]">
+                                    </span>
+                                </form>
+                            </div>
+
+    
+                            <div class="col-span-3 mt-3">
+                                <h1 class="text-lg font-semibold mt-0.5 "><br> 关于</h1>
+                            </div>
+                            <div class="col-span-full mt-1 break-all">
+                                <p class="my-1.5">这是一个基于<a id="link-pbc">ProjBobcat</a>核心与<a id="link-ejs">Electron JS</a>前端实现的启动器。主要用于打包CMFS-Apocrypha Forge客户端。功能仅限离线登录、游戏启动、资源补全* 。</p>
+                                <p class="my-1.5">本项目MIT开源。</p>
+                                <p class="my-1.5">LauncherW，即LauncherWebUI，是设计上接近LauncherX的Minecraft启动器。</p>
+                                <p class="my-1.5">*：将在未来推出。</p>
+                                <p class="my-1.5">版本号：0.1</p>
+                                <p class="my-1.5">主刀：Feiron Iguista</p>
+                                <p class="my-1.5">本项目没有适配i18N的计划。<br><br> 屑!</p>
+                            </div>
+                            
+                            <div class="col-span-full h-12"></div>
+                        </div>
+                        <!-- divider for different win -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                    </div>
+                
+                    <div class="hidden    grid-cols-5 gap-0.5 bg-slate-50 transition-all border-white border rounded shadow bg-opacity-90 p-3 hin" id="userchoose">
+                        <div class="col-span-full clear-both winher fixed bg-gray-200 px-2.5 right-8 rounded-lg p-1.5 shadow-md ">
+                            <span class="float-left text-lg mr-3">选择启动账户</span>
+                            <span class="transition-all float-right text-lg font-semibold bg-rose-300 dark:bg-rose:200 hover:bg-red-400 dark:hover:bg-rose-700
+                            active:bg-red-800 px-3 border rounded aju-shut" id="">&times;</span>
+                        </div>
+                        <div class="col-span-full h-12 mb-1 "></div> <!--to made blanc-->
+                        <div class="e col-span-full overflow-y-scroll px-4 overflow-x-clip grid grid-cols-5 gap-0.5 bg-transparent">
+                            <!-- per single item -->
+                            <div class="col-span-3 mb-3.5">
+                                <h1>显示日志到主界面</h1>
+                            </div>
+                            <div class="spanner"></div>
+                            <div class="toggle text-right mr-1.5">
+                                <button value="">开</button>
+                            </div>
+    
+                            <div class="col-span-3 mb-3.5">
+                                <h1>启动用Java版本：</h1>
+                            </div>
+                            <div class="spanner col-span-2">
+                                <select name="java" id="java" class="w-36">
+                                    <option value="选择Java版本" selected disabled>选择Java</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-span-3 mb-3.5">
+                                <h1>游戏窗口大小</h1>
+                            </div>
+                            <div class="x border-r">
+                                宽：<input type="text" name="" class="w-28" id="">
+                            </div>
+                            <div class="y">
+                                高：<input type="text" name="" class="w-28" id="">
+                            </div>
+    
+                            <div class="col-span-3 mb-3.5">
+                                <h1>显示日志到主界面</h1>
+                            </div>
+                            <div class="spanner"></div>
+                            <div class="toggle text-right mr-1.5">
+                                <button value="">开</button>
+                            </div>
+    
+                            <div class="col-span-3 mt-1">
+                                <h1 class="text-lg font-semibold mt-0.5 ">关于</h1>
+                            </div>
+                            <div class="col-span-full mt-1 break-all">
+                                <p class="my-1.5">这是一个基于<a id="link-pbc">ProjBobcat</a>核心与<a id="link-ejs">Electron JS</a>前端实现的启动器。主要用于打包CMFS-Apocrypha Forge客户端。功能仅限离线登录、游戏启动、资源补全* 。</p>
+                                <p class="my-1.5">本项目MIT开源。</p>
+                                <p class="my-1.5">LauncherW，即LauncherWebUI，是设计上接近LauncherX的Minecraft启动器。</p>
+                                <p class="my-1.5">*：将在未来推出。</p>
+                                <p class="my-1.5">版本号：0.1</p>
+                                <p class="my-1.5">主刀：Feiron Iguista</p>
+                                <p class="my-1.5">本项目没有适配i18N的计划。<br><br> 屑!</p>
+                            </div>
+                            
+                            <div class="col-span-full h-12"></div>
+                        </div>
+                        <!-- divider for different win -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                    </div>
+                
+                    <div class="hidden   grid-cols-5 gap-0.5 bg-slate-50 transition-all border-white border rounded shadow bg-opacity-90 p-3 hin" id="gamelist">
+                        <div class="col-span-full clear-both winher fixed bg-gray-200 px-2.5 right-8 rounded-lg p-1.5 shadow-md ">
+                            <span class="float-left text-lg mr-3">游戏列表</span>
+                            <span class="transition-all float-right text-lg font-semibold bg-rose-300 dark:bg-rose:200 hover:bg-red-400 dark:hover:bg-rose-700
+                            active:bg-red-800 px-3 border rounded aju-shut" id="">&times;</span>
+                        </div>
+                        <div class="col-span-full h-12 mb-1 "></div> <!--to made blanc-->
+                        <div class="e col-span-full overflow-y-scroll px-4 overflow-x-clip grid grid-cols-5 gap-0.5 bg-transparent">
+                            <!-- per single item -->
+                            <div class="col-span-3 mb-3.5">
+                                <h1>显示日志到主界面</h1>
+                            </div>
+                            <div class="spanner"></div>
+                            <div class="toggle text-right mr-1.5">
+                                <button value="">开</button>
+                            </div>
+    
+                            <div class="col-span-3 mb-3.5">
+                                <h1>启动用Java版本：</h1>
+                            </div>
+                            <div class="spanner col-span-2">
+                                <select name="java" id="java" class="w-36">
+                                    <option value="选择Java版本" selected disabled>选择Java</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-span-3 mb-3.5">
+                                <h1>游戏窗口大小</h1>
+                            </div>
+                            <div class="x border-r">
+                                宽：<input type="text" name="" class="w-28" id="">
+                            </div>
+                            <div class="y">
+                                高：<input type="text" name="" class="w-28" id="">
+                            </div>
+    
+                            <div class="col-span-3 mb-3.5">
+                                <h1>显示日志到主界面</h1>
+                            </div>
+                            <div class="spanner"></div>
+                            <div class="toggle text-right mr-1.5">
+                                <button value="">开</button>
+                            </div>
+    
+                            <div class="col-span-3 mt-1">
+                                <h1 class="text-lg font-semibold mt-0.5 ">关于</h1>
+                            </div>
+                            <div class="col-span-full mt-1 break-all">
+                                <p class="my-1.5">这是一个基于<a id="link-pbc">ProjBobcat</a>核心与<a id="link-ejs">Electron JS</a>前端实现的启动器。主要用于打包CMFS-Apocrypha Forge客户端。功能仅限离线登录、游戏启动、资源补全* 。</p>
+                                <p class="my-1.5">本项目MIT开源。</p>
+                                <p class="my-1.5">LauncherW，即LauncherWebUI，是设计上接近LauncherX的Minecraft启动器。</p>
+                                <p class="my-1.5">*：将在未来推出。</p>
+                                <p class="my-1.5">版本号：0.1</p>
+                                <p class="my-1.5">主刀：Feiron Iguista</p>
+                                <p class="my-1.5">本项目没有适配i18N的计划。<br><br> 屑!</p>
+                            </div>
+                            
+                            <div class="col-span-full h-12"></div>
+                        </div>
+                        <!-- divider for different win -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                    </div>
+                
+            
+            </div>
+
+</body>
+<script src="./render.js"></script>
+</html>

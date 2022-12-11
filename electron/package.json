@@ -1,0 +1,15 @@
+{
+  "name": "launcherw",
+  "version": "0.0.1",
+  "description": "LauncherWeb ProjBobcat but Electron FrontEnd",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Feiron Iguista (Corona Studio)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^22.0.0"
+  }
+}
