@@ -54,118 +54,121 @@ minButton.addEventListener("click", () => {
 const ajustes = document.getElementById("aju"); // bind button
 const gamelistbut = document.getElementById("gamelistBut");
 const jusr = document.getElementById("usrBut");
-
 // 
-
-
 const cow = document.getElementById("cout"); // child outer window
 
 const iow_set = document.getElementById("settings");
 const iow_usr = document.getElementById("userchoose");
 const iow_lst = document.getElementById("gamelist");
 
-const closeAju = document.getElementsByClassName("aju-shut");
-
-const subAllReset = () => {
-    try{
-        iow_set.classList.replace("grid", "hidden");
-        iow_usr.classList.replace("grid", "hidden");
-        iow_lst.classList.replace("grid", "hidden");
-    }catch(e){console.error(e)}
+const subAllReset = () => {try{
+        iow_set.classList.replace("flew", "flyout");
+        iow_usr.classList.replace("flew", "flyout");
+        iow_lst.classList.replace("flew", "flyout");
+        setTimeout(() => {
+            iow_set.classList.replace("grid", "hidden");
+            iow_usr.classList.replace("grid", "hidden");
+            iow_lst.classList.replace("grid", "hidden");
+            iow_set.classList.remove("flyout");
+            iow_usr.classList.remove("flyout");
+            iow_lst.classList.remove("flyout");
+            if(cow.classList.contains("subShowOut")) cow.classList.replace("subShowOut", "hidden"); else cow.classList.add("hidden");
+        }, 499);}catch(e){iMIPC("log#"+e)}
 }
-
-const cow_in = () => {
-    // need to load after determined timings
-    cow.classList.remove("subShowOut");
-    cow.classList.add("subShowIn");
-}
-
-const cow_ou = () => {
-    // need to load after determined timings
-    cow.classList.remove("subShowIn");
-    cow.classList.add("subShowOut");
-}
-
-const swiAju = () => {
-    // before every switch, hide all but enable the need
-    subAllReset();
-    if(cow.classList.contains("hidden")){
-        iow_set.classList.replace("hidden", "grid");
-        cow.classList.replace("hidden", "ajustat");
-        // iow_set.classList.replace("hidden", "grid");
-        setTimeout(cow_in, 199);
-    }
-    else{
-        // iow_set.classList.replace("grid", "hidden");
-        cow.classList.replace("ajustat", "hidden");
-        setTimeout(cow_ou, 199);
-    }   
-}
-ajustes.addEventListener("click", swiAju);
-
-    //
-    
-const swiLst = () => {
-// before every switch, hide all but enable the need
-    subAllReset();
-    if(cow.classList.contains("hidden")){
-        iow_lst.classList.replace("hidden", "grid");
-        cow.classList.replace("hidden", "ajustat");
-        // iow_set.classList.replace("hidden", "grid");
-        setTimeout(cow_in, 199);
-    }
-    else{
-        // iow_set.classList.replace("grid", "hidden");
-        cow.classList.replace("ajustat", "hidden");
-        setTimeout(cow_ou, 199);
-    }   
-}
-gamelistbut.addEventListener("click", swiLst);
-
-//
-        
-const swiUsr = () => {
-    // before every switch, hide all but enable the need
-        subAllReset();
-        if(cow.classList.contains("hidden")){
-            iow_usr.classList.replace("hidden", "grid");
-            cow.classList.replace("hidden", "ajustat");
-            // iow_set.classList.replace("hidden", "grid");
-            setTimeout(cow_in, 199);
-        }
-        else{
-            // iow_set.classList.replace("grid", "hidden");
-            cow.classList.replace("ajustat", "hidden");
-            setTimeout(cow_ou, 199);
-        }   
-    }
-jusr.addEventListener("click", swiUsr);
-
-//
-    
+var u_dav = 0; // the close buttons should shown in seconds later
+const closeAju = document.getElementsByClassName("aju-shut");// 0:settings 1:account 2:list
 for(var thesubclose of closeAju){
-    thesubclose.addEventListener("click", ()=>{ // inside this anonymous func, can add the subwindow shut animation procedure.
-        cow.classList.replace("ajustat", "hidden");subAllReset();
+    thesubclose.addEventListener("click", (event)=>{ // inside this anonymous func, can add the subwindow shut animation procedure.
+        iMIPC("log#0\n"+event.currentTarget);
+        event.currentTarget.parentNode.classList.add("hidden");
+        setTimeout(() => {
+            cow.classList.replace("subShowIn", "subShowOut");
+            setTimeout(() => {
+                subAllReset();
+                event.currentTarget.parentNode.classList.remove("hidden");
+            }, 170);
+        }, 30);       
     });
 }
+const swiAju = () => {
+    // before every switch, hide all but enable the need
+    if(cow.classList.contains("hidden")){
+        cow.classList.replace("hidden", "subShowIn"); //wait the cow animation
+        setTimeout(()=>{
+            iow_set.classList.replace("hidden", "grid");
+            closeAju[0].parentNode.classList.add("hidden"); 
+            closeAju[0].parentNode.classList.add("mainShowIn"); 
+            iow_set.classList.add("flew");
+            setTimeout(() => {
+                closeAju[0].parentNode.classList.remove("hidden"); 
+                closeAju[0].parentNode.classList.replace("mainShowIn", "mainShowOut"); 
+            }, 499);
+        }, 198);
+    }
+}
+ajustes.addEventListener("click", swiAju);
+const swiLst = () => {
+// before every switch, hide all but enable the need
+    if(cow.classList.contains("hidden")){  
+        cow.classList.replace("hidden", "subShowIn"); //wait the cow animation
+        setTimeout(()=>{
+            iow_lst.classList.replace("hidden", "grid");
+            closeAju[2].parentNode.classList.add("hidden"); 
+            closeAju[2].parentNode.classList.add("mainShowIn"); 
+            iow_lst.classList.add("flew");
+            setTimeout(() => {
+                closeAju[2].parentNode.classList.remove("hidden"); 
+                closeAju[2].parentNode.classList.replace("mainShowIn", "mainShowOut"); 
+            }, 499);
+        }, 198);
+    }
+}
+gamelistbut.addEventListener("click", swiLst);
+//     
+const swiUsr = () => {
+    // before every switch, hide all but enable the need
+    if(cow.classList.contains("hidden")){
+        cow.classList.replace("hidden", "subShowIn"); //wait the cow animation
+        setTimeout(()=>{
+            iow_usr.classList.replace("hidden", "grid");
+            closeAju[1].parentNode.classList.add("hidden"); 
+            closeAju[1].parentNode.classList.add("mainShowIn"); 
+            iow_usr.classList.add("flew");
+            setTimeout(() => {
+                closeAju[1].parentNode.classList.remove("hidden"); 
+                closeAju[1].parentNode.classList.replace("mainShowIn", "mainShowOut"); 
+            }, 499);
+        }, 198);
+    }
+}
+jusr.addEventListener("click", swiUsr);
 
 // functional area start
-
 // <=12 letters uid wont roll
-
 //    --- log pusher
+
+var logAreaInnerHeight;
 const logArea = document.getElementById("logs");
 const pushLog = (log) => {
     let elog = document.createElement("p");
     elog.innerHTML = log;
-    if(logArea.children.length>=10){
-        logArea.firstChild.remove();
-        logArea.firstChild.remove();
-    }
-  
+    iMIPC("clog#" + logAreaInnerHeight);
+
+    if(logArea.children.length>=10 ) logAreaRemoveTwice();
     logArea.appendChild(elog);
-    console.log("Pushed log to the Window panel: "+elog);
+
+    console.log("clog#" + logArea.children.length);
+    // if(logArea.children.length > 0 ) for(let logChild of logArea){
+    //     logAreaInnerHeight += logChild.style.clientHeight.replace('px', '').parseInt();
+    // }
+    if(logAreaInnerHeight >= 275) logAreaRemoveTwice();
+    iMIPC("clog#Pushed log to the Window panel: "+elog);
     delete elog;
+}
+
+const logAreaRemoveTwice = () => {
+    logArea.firstChild.remove();
+    logArea.firstChild.remove();
 }
 
 window.onload = () =>{
@@ -173,7 +176,6 @@ window.onload = () =>{
     setTimeout(() => {
         SCP("switch-shut-log");
     }, 1789);
-    
 }
 swt_toggle_displayLogOnMain.addEventListener("click", () => SCP("switch-shut-log"));
 
@@ -242,12 +244,16 @@ const SCP = (cmd) =>
             iRIPC(dot);
             pushLog("尝试传递指令到RIPC: "+dot);
             break;
+        case "run":
+            break;
+        case "cmd":
+            iMIPC(cmd);
+            break;
         default:
             pushLog("渲染进程检测到了未指定的内部命令头："+pcmd[0]+" ; 而这个完整的命令是："+cmd);
             break; //
     }
 }
-
 
 // kill vanilla atag\
 const a_pbc = document.getElementById("link-pbc");
@@ -256,37 +262,18 @@ const a_ejs = document.getElementById("link-ejs");
 a_pbc.onclick = () => iMIPC("link#https://github.com/Corona-Studio/ProjBobcat/");
 a_ejs.onclick = () => iMIPC("link#https://www.electronjs.org/");
 
-const alink = () => {
-
-}
-
 const switchThis = () => {
-    
-
     if(logArea.classList.contains("hidden")) 
     {
-        
         swt_toggle_displayLogOnMain.innerHTML="点击开启";
         swt_toggle_displayLogOnMain.className = on_series;
-
     }
     else 
     {
-        
         swt_toggle_displayLogOnMain.innerHTML="点击关闭";
         swt_toggle_displayLogOnMain.className = off_series;
-
-
     }
 }
-
-
-
-
-
-
-
-
 
 // command receive from Main JS
 

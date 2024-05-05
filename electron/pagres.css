@@ -23,6 +23,16 @@
     height: auto;
 
 }
+
+.hord{
+    height: 341.5px;
+}
+
+.selected{
+    border-color: rgba(255, 119, 119, 0.884) !important;
+    border-width: 3px !important;
+}
+
  .adw{
     width: 100%;
     min-width: 98.5%;
@@ -30,8 +40,8 @@
 }
 
 .hin{
-    height: 425px;
-    max-height: 425px;
+    height: 423.5px;
+    max-height: 423.5px;
 }
 
 .winher{
@@ -123,18 +133,21 @@
 
 @keyframes sso{
     0%{
-        transform: translateY(-100) !important;
+        background-color: rgba(233, 233, 233, 0.05) !important;
     }
     100%{
-        transform: translateY(0) !important;
+        background-color: rgba(233, 233, 233, 0) !important;
     }
 
 }
 
-
+.w-dw{
+    width: 555.5px;
+}
 
 .bgass{
-    background-color: rgba(233, 240, 240, 0.829);
+    background-color: rgba(233, 233, 233, 0.05);
+    
 }
 
 .subShowIn{ /*hide*/
@@ -143,14 +156,34 @@
 
 @keyframes ssi{
     0%{
-        opacity: 90% !important;
+        background-color: rgba(233, 233, 233, 0) !important;
     }
     100%{
-        opacity: 0% !important;
+        background-color: rgba(233, 233, 233, 0.05) !important;
     }
 
 }
 
 .w-up{
     width: 36.5rem;
+}
+
+
+
+
+
+.flew{
+    animation: flew .5s ease;
+}
+
+.flyout{
+    animation: fly .5s ease;
+}
+
+@keyframes flew {
+    from{transform: translateY(-390px);}to{transform: translateY(0px);}
+}
+
+@keyframes fly {
+    from{transform: translateY(0px);}to{transform: translateY(-550px);}
 }
